@@ -97,20 +97,22 @@
         </p>
       </div>
     </section>
+    <GamestateFinish v-else />
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex"
-import gsap from "gsap"
+import { mapState } from 'vuex';
+import gsap from 'gsap';
 
-import Score from "@/components/Score.vue"
-import Baker from "@/components/Baker.vue"
-import Friend from "@/components/Friend.vue"
-import Artist from "@/components/Artist.vue"
-import Zombie from "@/components/Zombie.vue"
-import Mechanic from "@/components/Mechanic.vue"
-import GamestateStart from "@/components/GamestateStart.vue"
+import Score from '@/components/Score.vue';
+import Baker from '@/components/Baker.vue';
+import Friend from '@/components/Friend.vue';
+import Artist from '@/components/Artist.vue';
+import Zombie from '@/components/Zombie.vue';
+import Mechanic from '@/components/Mechanic.vue';
+import GamestateStart from '@/components/GamestateStart.vue';
+import GamestateFinish from './components/GamestateFinish.vue';
 
 export default {
   components: {
@@ -121,46 +123,47 @@ export default {
     Zombie,
     Mechanic,
     GamestateStart,
+    GamestateFinish,
   },
   data() {
     return {
-      characterinput: "",
-    }
+      characterinput: '',
+    };
   },
   computed: {
     ...mapState([
-      "uiState",
-      "characterChoices",
-      "character",
-      "questions",
-      "questionIndex",
-      "score",
+      'uiState',
+      'characterChoices',
+      'character',
+      'questions',
+      'questionIndex',
+      'score',
     ]),
   },
   methods: {
     pickCharacter() {
-      this.$store.commit("updateCharacter", this.characterinput)
-      this.$store.commit("updateUIState", "characterChosen")
+      this.$store.commit('updateCharacter', this.characterinput);
+      this.$store.commit('updateUIState', 'characterChosen');
     },
     pickQuestion(character) {
-      this.$store.commit("pickQuestion", character)
+      this.$store.commit('pickQuestion', character);
     },
     shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        ;[array[i], array[j]] = [array[j], array[i]]
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
       }
-      return array
+      return array;
     },
   },
-}
+};
 </script>
 
 <style lang="scss">
 body {
   margin: 0;
   padding: 0;
-  font-family: "Recursive", Helvetica, Arial, sans-serif;
+  font-family: 'Recursive', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 19px;
@@ -170,7 +173,7 @@ body {
   height: 100vh; /* if you don't want it to take up the full screen, reduce this number */
   overflow: hidden;
   background-size: cover !important;
-  background: url("./assets/background.svg") no-repeat center center scroll,
+  background: url('./assets/background.svg') no-repeat center center scroll,
     #29abe2;
 }
 
@@ -230,7 +233,7 @@ button {
   background: #0c719b;
   color: #ffffff;
   font-size: 1rem;
-  font-family: "Recursive", Helvetica, Arial, sans-serif;
+  font-family: 'Recursive', Helvetica, Arial, sans-serif;
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
@@ -238,7 +241,7 @@ button {
 }
 
 text {
-  font-family: "Recursive", Helvetica, Arial, sans-serif;
+  font-family: 'Recursive', Helvetica, Arial, sans-serif;
 }
 
 .zombietalk {
