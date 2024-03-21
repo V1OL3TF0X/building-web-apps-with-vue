@@ -45,7 +45,8 @@
         <Friend />
         <Score />
 
-        <component :is="character"></component>
+        <component :is="character" class="character-clip" />
+        <Zombie class="zombie-clip" />
 
         <text
           x="1000"
@@ -113,7 +114,7 @@ import Zombie from '@/components/Zombie.vue';
 import Mechanic from '@/components/Mechanic.vue';
 import GamestateStart from '@/components/GamestateStart.vue';
 import GamestateFinish from './components/GamestateFinish.vue';
-
+const personH = 546.5 - 69.5;
 export default {
   components: {
     Score,
@@ -154,6 +155,20 @@ export default {
         [array[i], array[j]] = [array[j], array[i]];
       }
       return array;
+    },
+  },
+  watch: {
+    score(newValue) {
+      let Hshown = 0;
+      if (newValue < 0) {
+        Hshown = Math.min(-newValue / 90, 1) * personH;
+      }
+      gsap.to('#bottom-clip', {
+        translateY: `${Hshown}`,
+      });
+      gsap.to('#top-clip', {
+        translateY: `${Hshown}`,
+      });
     },
   },
 };
