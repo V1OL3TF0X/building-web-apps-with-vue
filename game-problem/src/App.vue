@@ -163,11 +163,8 @@ export default {
       if (newValue < 0) {
         Hshown = Math.min(-newValue / 90, 1) * personH;
       }
-      gsap.to('#bottom-clip', {
-        translateY: `${Hshown}`,
-      });
-      gsap.to('#top-clip', {
-        translateY: `${Hshown}`,
+      gsap.to('#bottom-clip, #top-clip', {
+        translateY: Hshown,
       });
     },
   },
@@ -251,6 +248,7 @@ button {
   font-family: 'Recursive', Helvetica, Arial, sans-serif;
   cursor: pointer;
   text-align: center;
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
