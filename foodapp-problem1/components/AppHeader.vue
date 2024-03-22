@@ -25,7 +25,7 @@ export default {};
       rgba(0, 0, 0, 0) 37%,
       rgba(0, 0, 0, 0.65) 100%
     ),
-    url(~assets/headerimg.jpg) no-repeat center center scroll;
+    url(/assets/headerimg.jpg) no-repeat center center scroll;
 }
 
 h1 {

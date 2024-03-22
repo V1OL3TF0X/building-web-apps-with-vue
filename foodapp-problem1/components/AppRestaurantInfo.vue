@@ -29,19 +29,13 @@
   </section>
 </template>
 
-<script>
-import { mapState } from "vuex";
-
-export default {
-  computed: {
-    ...mapState(["fooddata"])
-  },
-  methods: {
-    priceFormatting(item) {
-      return "$" + item.toFixed(2);
-    }
-  }
-};
+<script setup>
+import { useMainStore } from "../store";
+const store = useMainStore();
+const { fooddata } = storeToRefs(store);
+function priceFormatting(item) {
+  return "$" + item.toFixed(2);
+}
 </script>
 
 <style lang="scss" scoped></style>
