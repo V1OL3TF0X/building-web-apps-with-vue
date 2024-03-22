@@ -4,7 +4,7 @@
       <AppMenu />
       <NuxtPage />
     </div>
-    <!-- sticky footer goes here -->
+    <AppFooter />
   </div>
 </template>
 
